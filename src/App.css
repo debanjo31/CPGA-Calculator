@@ -1,0 +1,63 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.body{
+  max-width: 900px;
+  margin: auto;
+  padding: 10px;
+}
+.header{
+  background-color: rgb(132, 76, 8);
+  display: flex;
+  height: 60px;
+  color: white;
+}
+
+.header h2{
+  margin-left: 20px;
+}
+
+
+.gpa-form{
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+  border-bottom: 1px solid rgb(132, 76, 8);
+  border-radius: 10px;
+}
+
+.gpa-form *{
+  height: 10px;
+  min-width: 50px;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 4px;
+  border: 1px solid black;
+  outline: none;
+  box-shadow: 5px 8px rgb(132, 76, 8);
+}
+
+#course{
+  min-width: 100px;
+}
+
+.addCourse{
+  display: block;
+  color:  white;
+  background-color: rgb(132, 76, 8) ;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(132, 76, 8);
+  margin : 15px auto;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+#point{
+  display: none;
+}
