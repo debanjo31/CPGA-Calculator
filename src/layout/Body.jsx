@@ -47,7 +47,7 @@ function Body() {
 
         </div>
         <div className="grades">
-            <h3>Total Course Unit : {unitSum } </h3>
+            <h3>Total Course Unit : {unitSum} </h3>
             <h3>Grade Point : {pointSum} </h3>
             <h3>CPGA : {cpgaSum.toFixed(2)}</h3>
             {(() =>{
