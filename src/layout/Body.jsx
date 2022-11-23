@@ -2,6 +2,9 @@ import React from 'react'
 import Grade from '../component/Grade'
 import { useState, useEffect} from 'react'
 import AddCourse from '../component/AddCourse';
+import ToggleGrade from '../component/ToggleGrade';
+import FourPointGrade from '../component/FourPointGrade';
+import CpgaSum from '../component/CpgaSum';
 
 
 
@@ -11,6 +14,7 @@ function Body() {
     const [unit, setunit] = useState([])
     const [point, setpoint] = useState([])
     const [cpgaSum, setcpgaSum] = useState(0)
+    const [isChecked, setisChecked] = useState(false)
     const addChild = () =>{
       const updatedCCount = [...count, count.length + 1]
       if(updatedCCount.length <= 15){
@@ -18,61 +22,67 @@ function Body() {
       }
     }
 
-   let unitSum = 0;
-   let pointSum = 0;
-   
-     for (let index = 0; index < unit.length; index++) {
-      let changedUnit = parseInt( unit[index])
-       unitSum = unitSum + changedUnit;
-       pointSum += point[index];
-     }
+    const [totalUnit, settotalUnit] = useState(0)
+    const [totalPoint, settotalPoint] = useState(0)
+    useEffect(() => {
+      const unitSum = unit.reduce((old, newOne) => old + newOne, 0
+          )
+      settotalUnit(unitSum)
+    }, [unit])
 
-   
-     useEffect(() => {
-        setcpgaSum(pointSum / unitSum)
-     }, [point])
+    useEffect(() => {
+      const pointSum = point.reduce((old, newOne) => old + newOne, 0
+      )
+      settotalPoint(pointSum)
+    }, [point])
+
+    useEffect(() =>{
+        console.log(totalPoint, totalUnit)
+        const gpa = totalPoint / totalUnit;
+        setcpgaSum(gpa)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [totalPoint])
+    
      
   return (
     <div className='body'>
+        <ToggleGrade setisChecked={setisChecked} setpoint={setpoint} setunit={setunit}/>
         <div className="gpa">
-          { count.map((index)=>{
-            return (
-              <form key={count[index - 1]}>
-                  <Grade setpoint={setpoint} setunit={setunit}/>
-              </form>
-            )
-           })
-          }          
+          {(() => {
+            if (isChecked === false) {
+              return(
+                count.map((index)=>{
+                  return (
+                    <form key={count[index - 1]}>
+                        <Grade setpoint={setpoint} setunit={setunit}/>
+                    </form>
+                  )
+                 })
+              )     
+            }
+            else{
+              return(
+                count.map((index)=>{
+                  return (
+                    <form key={count[index - 1]}>
+                        <FourPointGrade  setpoint={setpoint} setunit={setunit} />
+                    </form>
+                  )
+                 })
+              )
+            }
+          })()}
+              
      <AddCourse setCount={addChild} /> 
 
         </div>
         <div className="grades">
-            <h3>Total Course Unit : {unitSum} </h3>
-            <h3>Grade Point : {pointSum} </h3>
+            <h3>Total Course Unit : {totalUnit} </h3>
+            <h3>Grade Point : {totalPoint} </h3>
             <h3>CPGA : {cpgaSum.toFixed(2)}</h3>
-            {(() =>{
-              if(cpgaSum.toFixed(2) <= 5 && cpgaSum.toFixed(2) >= 4.50 ){
-                return(
-                  <h3> 1st Class Honours</h3>
-                )
-              }
-              else if(cpgaSum.toFixed(2) <= 4.99 && cpgaSum.toFixed(2) >= 3.50){
-                return(
-                  <h3> 2nd Class Upper</h3>
-                )
-              }
-              else if(cpgaSum.toFixed(2) <= 3.49 && cpgaSum.toFixed(2) >= 2.40){
-                return(
-                  <h3> 2nd Class Lower</h3>
-                )
-              }
-              else if(cpgaSum.toFixed(2) <= 2.39 && cpgaSum.toFixed(2) >= 1.50){
-                return(
-                  <h3> 3rd Class</h3>
-                )
-              }
-            })()}
+            <CpgaSum cpgaSum={cpgaSum} isChecked={isChecked}/>
         </div>
+        
     </div>
   )
  

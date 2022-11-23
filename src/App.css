@@ -14,6 +14,7 @@ body{
   display: flex;
   height: 60px;
   color: white;
+  padding-bottom: 10px;
 }
 
 .header h2{
@@ -60,4 +61,100 @@ body{
 
 #point{
   display: none;
+}
+
+.grades{
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid rgb(132, 76, 8);
+  border-radius: 5px;
+  padding: 20px;
+  color: rgb(132, 76, 8);
+}
+
+@media screen and (max-width:  700px) {
+ .grades{
+  flex-direction: column;
+  text-align: center;
+ } 
+}
+
+
+footer{
+  background-color: #222;
+  color: white;
+  padding: 30px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.toggleGrade{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  margin-left: 40px;
+  justify-content:space-evenly ;
+  font-weight: bold;
+  color: black;
+}
+
+.toggleGrade span{
+  font-size: 18px;
+  z-index: 1;
+}
+
+.changeGrade{
+  position: relative;
+  display: inline-block;
+  height: 38px;
+  width: 250px;
+  background-color: rgb(132, 76, 8);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-evenly;
+}
+
+.changeGrade input{
+  display: none;
+}
+
+.slider{
+  position: absolute;
+  cursor: pointer;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  top: 0;
+  transition: 0.2s;
+}
+
+.slider::before{
+  background-color: white;
+  content: "";
+  left: -248px;
+  position: absolute;
+  transition: 0.4s;
+  height: 34px;
+  width: 140px;
+  border-radius: 20px;
+  top: 2px;
+}
+.fivepoint{
+  margin-left: -20px;
+  margin-right: 20px;
+}
+
+input:checked + .slider::before{
+  transform: translateX(106px);
+}
+
+input:checked + .slider{
+  background-color: cornflowerblue;
+}
+
+.slider.round{
+  border-radius: 34px;
 }
