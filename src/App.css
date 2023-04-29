@@ -1,127 +1,147 @@
-body{
+body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.body{
-  max-width: 900px;
-  margin: auto;
-  padding: 10px;
+:root {
+  font-size: 10px;
 }
-.header{
+
+.body {
+  max-width: 90rem;
+  margin: auto;
+  padding: 1rem;
+}
+.header {
   background-color: rgb(132, 76, 8);
   display: flex;
-  height: 60px;
+  height: 6rem;
   color: white;
-  padding-bottom: 10px;
+  padding-bottom: 1rem;
 }
 
-.header h2{
-  margin-left: 20px;
+.header h2 {
+  margin-left: 2rem;
+  font-size: 2.5rem;
 }
 
-
-.gpa-form{
-  margin-top: 10px;
+.gpa-form {
+  margin-top: 1rem;
   display: flex;
   justify-content: space-evenly;
-  padding: 10px;
+  padding: 1rem;
   border-bottom: 1px solid rgb(132, 76, 8);
-  border-radius: 10px;
+  border-radius: 1rem;
 }
 
-.gpa-form *{
-  height: 10px;
-  min-width: 50px;
-  padding: 10px;
-  margin: 10px;
+.gpa-form * {
+  height: 1rem;
+  min-width: 5rem;
+  padding: 1rem;
+  margin: 1rem;
   border-radius: 4px;
   border: 1px solid black;
   outline: none;
   box-shadow: 5px 8px rgb(132, 76, 8);
 }
 
-#course{
-  min-width: 100px;
+#course {
+  min-width: 10rem;
 }
 
-.addCourse{
-  display: block;
-  color:  white;
-  background-color: rgb(132, 76, 8) ;
+.flex {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px;
+}
+
+.calculate {
+  color: white;
+  background-color: rgb(132, 76, 8);
   outline: none;
   border: none;
   border-bottom: 1px solid rgb(132, 76, 8);
-  margin : 15px auto;
-  padding: 10px 20px;
+  padding: 1rem 2rem;
   font-weight: bold;
-  border-radius: 5px;
+  border-radius: 0.5rem;
+}
+.addCourse {
+  display: block;
+  color: white;
+  background-color: rgb(132, 76, 8);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(132, 76, 8);
+  padding: 1rem 2rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
 }
 
-#point{
-  display: none;
+#point {
+  display: block;
 }
 
-.grades{
+.grades {
   display: flex;
   justify-content: space-between;
   border: 2px solid rgb(132, 76, 8);
-  border-radius: 5px;
-  padding: 20px;
+  border-radius: 0.5rem;
+  padding: 2rem;
   color: rgb(132, 76, 8);
+  font-size: 1.5rem;
 }
 
-@media screen and (max-width:  700px) {
- .grades{
-  flex-direction: column;
-  text-align: center;
- } 
+@media screen and (max-width: 700px) {
+  .grades {
+    flex-direction: column;
+    text-align: center;
+  }
 }
 
-
-footer{
+footer {
   background-color: #222;
   color: white;
-  padding: 30px;
+  padding: 3rem;
   text-align: center;
-  margin-top: 50px;
+  margin-top: 5rem;
 }
 
-.toggleGrade{
+.toggleGrade {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 4px;
-  margin-left: 40px;
-  justify-content:space-evenly ;
+  margin-left: 4rem;
+  justify-content: space-evenly;
   font-weight: bold;
   color: black;
 }
 
-.toggleGrade span{
-  font-size: 18px;
+.toggleGrade span {
+  font-size: 1.65rem;
   z-index: 1;
 }
 
-.changeGrade{
+.changeGrade {
   position: relative;
   display: inline-block;
-  height: 38px;
-  width: 250px;
+  height: 3.8rem;
+  width: 25rem;
   background-color: rgb(132, 76, 8);
-  border-radius: 20px;
+  border-radius: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
 }
 
-.changeGrade input{
+.changeGrade input {
   display: none;
 }
 
-.slider{
+.slider {
   position: absolute;
   cursor: pointer;
   bottom: 0;
@@ -131,30 +151,42 @@ footer{
   transition: 0.2s;
 }
 
-.slider::before{
+.slider::before {
   background-color: white;
   content: "";
-  left: -248px;
+  left: -24.8rem;
   position: absolute;
   transition: 0.4s;
-  height: 34px;
-  width: 140px;
-  border-radius: 20px;
-  top: 2px;
+  height: 3.4rem;
+  width: 14rem;
+  border-radius: 2rem;
+  top: 0.2rem;
 }
-.fivepoint{
-  margin-left: -20px;
-  margin-right: 20px;
-}
-
-input:checked + .slider::before{
-  transform: translateX(106px);
+.fivepoint {
+  margin-left: -2rem;
+  margin-right: 2rem;
 }
 
-input:checked + .slider{
+input:checked + .slider::before {
+  transform: translateX(10.6rem);
+}
+
+input:checked + .slider {
   background-color: cornflowerblue;
 }
 
-.slider.round{
-  border-radius: 34px;
+.slider.round {
+  border-radius: 3.4rem;
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    font-size: 8px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  :root {
+    font-size: 7px;
+  }
 }
