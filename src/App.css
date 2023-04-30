@@ -21,10 +21,10 @@ body {
   padding-bottom: 1rem;
 }
 
-.text{
+/* .text {
   max-width: 90rem;
-  margin: auto;
-}
+  margin: 0 0;
+} */
 .header h2 {
   margin-left: 2rem;
   font-size: 2.5rem;
